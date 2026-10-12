@@ -217,11 +217,95 @@ main {
   color: var(--ink-faint);
   font-size: 13px;
   text-decoration: none;
+  border: none;
+  background: none;
   border-bottom: 1px dashed var(--hair-strong);
-  padding-bottom: 2px;
-  transition: color 0.2s;
+  padding: 0 0 2px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.2s, border-color 0.2s;
 }
-.source:hover { color: var(--accent); border-color: var(--accent); }
+.source:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* === info modal === */
+.modal {
+  position: fixed; inset: 0;
+  z-index: 300;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal.open { display: flex; }
+.modal-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(5, 6, 12, 0.72);
+  backdrop-filter: blur(8px);
+}
+.modal-card {
+  position: relative;
+  max-width: 520px;
+  width: 100%;
+  padding: 36px 32px 28px;
+  background: linear-gradient(180deg, rgba(25, 19, 32, 0.95), rgba(15, 11, 20, 0.95));
+  border: 1px solid var(--accent-soft);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 80px -20px rgba(231, 180, 200, 0.25);
+  animation: modal-in 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.modal-close {
+  position: absolute;
+  top: 14px; right: 16px;
+  width: 32px; height: 32px;
+  background: none;
+  border: 1px solid var(--hair);
+  color: var(--ink-dim);
+  border-radius: 8px;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.modal-close:hover { color: var(--accent); border-color: var(--accent); }
+.modal-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.modal-title {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 32px;
+  color: var(--ink);
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+.modal-body {
+  color: var(--ink-dim);
+  font-size: 14.5px;
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+.modal-body strong {
+  color: var(--accent);
+  font-weight: 500;
+}
+.modal-sig {
+  margin-top: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-faint);
+  text-align: right;
+}
 
 .scroll-hint {
   position: absolute;

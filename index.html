@@ -62,7 +62,7 @@
       <span>windows 10/11</span>
     </div>
 
-    <a class="source" href="https://github.com/6larping7/aurora" target="_blank" rel="noopener">View source on GitHub →</a>
+    <button class="source" id="btn-info" type="button">Info →</button>
 
     <div class="scroll-hint"><span>scroll</span></div>
   </section>
@@ -214,6 +214,27 @@
 </main>
 
 <div class="toast" id="toast" aria-live="polite"></div>
+
+<div class="modal" id="info-modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-card">
+    <button class="modal-close" aria-label="close" data-close>×</button>
+    <p class="modal-eyebrow">why aurora exists</p>
+    <h3 class="modal-title">a fuck you to greedy devs.</h3>
+    <p class="modal-body">
+      we're not here to compete with other executors. i personally made this
+      as a response to the paid-executor landscape — <strong>$7 a week</strong>,
+      <strong>12 hours per key</strong>, <strong>$15 lifetime</strong> gates on
+      what should be free.
+    </p>
+    <p class="modal-body">
+      free users deserve a good executor. aurora is that. the lifetime option
+      exists for anyone who wants to skip the key loop — not because we're
+      holding features hostage behind it.
+    </p>
+    <p class="modal-sig">— @6larping7</p>
+  </div>
+</div>
 
 <script src="snow.js"></script>
 <script src="site.js"></script>

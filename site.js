@@ -44,6 +44,15 @@ document.getElementById('dl-emulator').addEventListener('click', () => {
   } catch (e) { /* offline, keep placeholder */ }
 })();
 
+// === info modal ===
+const infoModal = document.getElementById('info-modal');
+const infoBtn = document.getElementById('btn-info');
+function openInfo() { infoModal.classList.add('open'); infoModal.setAttribute('aria-hidden', 'false'); }
+function closeInfo() { infoModal.classList.remove('open'); infoModal.setAttribute('aria-hidden', 'true'); }
+infoBtn.addEventListener('click', openInfo);
+infoModal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeInfo));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeInfo(); });
+
 // === topnav shrink on scroll ===
 const nav = document.querySelector('.topnav');
 window.addEventListener('scroll', () => {
