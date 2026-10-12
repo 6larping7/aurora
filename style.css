@@ -217,8 +217,11 @@ main {
   color: var(--ink-faint);
   font-size: 13px;
   text-decoration: none;
-  border: none;
-  background: none;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
   border-bottom: 1px dashed var(--hair-strong);
   padding: 0 0 2px;
   cursor: pointer;
@@ -226,6 +229,7 @@ main {
   transition: color 0.2s, border-color 0.2s;
 }
 .source:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.source:focus-visible { color: var(--accent); border-bottom-color: var(--accent); }
 
 /* === info modal === */
 .modal {
