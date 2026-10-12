@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>aurora — roblox executor</title>
+<meta name="description" content="Aurora. Roblox internal executor. Built from zero in one month with Claude Opus 4.7.">
+<meta property="og:title" content="aurora">
+<meta property="og:description" content="Roblox internal executor. Built from zero in one month.">
+<meta property="og:image" content="bg.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="bg-overlay"></div>
+<div class="bg-grain"></div>
+<canvas id="snow" aria-hidden="true"></canvas>
+
+<nav class="topnav">
+  <a href="#top" class="nav-brand">aurora</a>
+  <div class="nav-links">
+    <a href="#features">features</a>
+    <a href="#how">how to use</a>
+    <a href="#faq">faq</a>
+    <a href="https://discord.gg/aurora" target="_blank" rel="noopener">discord</a>
+    <a href="#download" class="nav-cta">download</a>
+  </div>
+</nav>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="status-pill">
+      <span class="dot"></span>
+      <span>aurora · roblox 0.741 · online</span>
+    </div>
+    <h1 class="wordmark">aurora</h1>
+    <p class="tagline">roblox internal executor. built from zero in one month.</p>
+
+    <div class="actions" id="download">
+      <button class="btn btn-solid" id="dl-aurora">
+        <span class="btn-main">Download Aurora</span>
+        <span class="btn-sub">spraxy.exe · overlay · module</span>
+      </button>
+      <button class="btn btn-ghost" id="dl-emulator">
+        <span class="btn-main">Download Emulator</span>
+        <span class="btn-sub">roblox 0.741 · pre-hyperion</span>
+      </button>
+    </div>
+
+    <div class="hero-meta">
+      <span><strong id="dl-count">—</strong> downloads</span>
+      <span class="dot-sep">·</span>
+      <span>200,000+ scripts</span>
+      <span class="dot-sep">·</span>
+      <span>windows 10/11</span>
+    </div>
+
+    <a class="source" href="https://github.com/6larping7/aurora" target="_blank" rel="noopener">View source on GitHub →</a>
+
+    <div class="scroll-hint"><span>scroll</span></div>
+  </section>
+
+  <section class="features" id="features">
+    <p class="section-eyebrow">what it does</p>
+    <h2 class="section-title">the full stack, in-process.</h2>
+
+    <div class="grid">
+      <article class="card">
+        <p class="card-eyebrow">Executor</p>
+        <h3>In-process Luau</h3>
+        <p>Compiled Luau through the step hook. Scripts run on the game thread, not a worker — state stays intact across calls.</p>
+      </article>
+
+      <article class="card">
+        <p class="card-eyebrow">Script hub</p>
+        <h3>Live ScriptBlox</h3>
+        <p>Search against the full ScriptBlox library in-app. No account, no key, no login — type and it queries.</p>
+      </article>
+
+      <article class="card">
+        <p class="card-eyebrow">MCP server</p>
+        <h3>AI-native</h3>
+        <p>Exposes aurora to Claude Code over MCP, so a model can read workspace state and drive the executor directly.</p>
+      </article>
+
+      <article class="card">
+        <p class="card-eyebrow">Drawing API</p>
+        <h3>Real overlay</h3>
+        <p>A separate process rendering a transparent window above roblox. No DX hook, no injection into the renderer.</p>
+      </article>
+
+      <article class="card">
+        <p class="card-eyebrow">Autoexec</p>
+        <h3>Drop a file</h3>
+        <p>Anything in <code>/autoexec/</code> runs the moment injection completes. No manifest, no config.</p>
+      </article>
+
+      <article class="card">
+        <p class="card-eyebrow">Themes</p>
+        <h3>Six palettes + custom</h3>
+        <p>Six built-in skins plus custom backdrops from any image or gif. Change the whole UI without rebuilding.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <p class="section-eyebrow">getting started</p>
+    <h2 class="section-title">three steps.</h2>
+
+    <ol class="steps">
+      <li>
+        <span class="step-num">01</span>
+        <h3>Download both</h3>
+        <p>Grab <strong>aurora.zip</strong> (the executor) and <strong>emulator.zip</strong> (frozen roblox 0.741). Extract both.</p>
+      </li>
+      <li>
+        <span class="step-num">02</span>
+        <h3>Launch spraxy.exe</h3>
+        <p>Open spraxy, subscribe once for your 12h key or buy lifetime. The emulator launches from inside the UI.</p>
+      </li>
+      <li>
+        <span class="step-num">03</span>
+        <h3>Join a game, inject, run</h3>
+        <p>Pick a game, hit <strong>Inject</strong>, paste a script. Autoexec files fire automatically on join.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="pricing">
+    <p class="section-eyebrow">pricing</p>
+    <h2 class="section-title">free, or free of the loop.</h2>
+
+    <div class="tier-grid">
+      <article class="tier">
+        <p class="tier-tag">FREE</p>
+        <p class="tier-price">$0</p>
+        <ul>
+          <li>Full executor, no feature cuts</li>
+          <li>All six themes, custom backdrops</li>
+          <li>Script hub, MCP, drawing — all of it</li>
+          <li>12h key, re-sub youtube to refresh</li>
+        </ul>
+        <button class="btn btn-ghost tier-btn" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Get aurora</button>
+      </article>
+
+      <article class="tier tier-lifetime">
+        <p class="tier-tag">LIFETIME</p>
+        <p class="tier-price">$15<span>once</span></p>
+        <ul>
+          <li>Everything in free, forever</li>
+          <li>No key loop, no youtube re-sub</li>
+          <li>HWID-locked, machine-portable on request</li>
+          <li>Priority discord role</li>
+        </ul>
+        <a class="btn btn-solid tier-btn" href="https://gumroad.com/l/aurora-lifetime" target="_blank" rel="noopener">Buy lifetime</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <p class="section-eyebrow">questions</p>
+    <h2 class="section-title">faq.</h2>
+
+    <div class="faq-list">
+      <details>
+        <summary>Why do I need the emulator?</summary>
+        <p>Roblox's current client ships with Hyperion anti-cheat. Aurora targets a frozen pre-Hyperion build (0.741) that we distribute as a sealed emulator. Your real roblox install stays untouched.</p>
+      </details>
+      <details>
+        <summary>Is it detected?</summary>
+        <p>The emulator never talks to the live roblox client. Nothing to detect — Hyperion isn't running on the build we inject into. Your real account is never touched.</p>
+      </details>
+      <details>
+        <summary>Does it support macOS or Linux?</summary>
+        <p>Windows 10/11 only. The internal is x64 PE, hooks a windows build of the client. Linux via proton isn't tested; macOS no.</p>
+      </details>
+      <details>
+        <summary>What's the key system?</summary>
+        <p>Free tier: subscribe <a href="https://youtube.com/@vxmpingz" target="_blank" rel="noopener">@vxmpingz</a> on youtube, refresh every 12h. Lifetime: $15 one-time, HWID-locked, never expires.</p>
+      </details>
+      <details>
+        <summary>What makes this different?</summary>
+        <p>First executor written from zero in one month, co-authored with Claude Opus 4.7. No forked code, no stolen DLLs. The whole thing — internal, overlay, launcher, key system — AI-paired and shipped public.</p>
+      </details>
+      <details>
+        <summary>Do I get a refund?</summary>
+        <p>Gumroad's 7-day no-questions policy applies to lifetime. If aurora stops working on a Roblox patch and we can't ship a fix within 7 days, refund stands.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="credits">
+    <p class="credit-line">
+      Built by <a href="https://github.com/6larping7" target="_blank" rel="noopener">@6larping7</a> with Claude Opus 4.7.
+      First executor written from scratch co-authored with an AI model, shipped in one month.
+    </p>
+    <div class="socials">
+      <a href="https://discord.gg/aurora" target="_blank" rel="noopener">discord</a>
+      <span>·</span>
+      <a href="https://youtube.com/@vxmpingz" target="_blank" rel="noopener">youtube</a>
+      <span>·</span>
+      <a href="https://github.com/6larping7/aurora" target="_blank" rel="noopener">github</a>
+    </div>
+    <p class="stamp">v0.741 · 2026-10-13</p>
+  </section>
+
+</main>
+
+<div class="toast" id="toast" aria-live="polite"></div>
+
+<script src="snow.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
