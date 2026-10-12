@@ -44,14 +44,35 @@ document.getElementById('dl-emulator').addEventListener('click', () => {
   } catch (e) { /* offline, keep placeholder */ }
 })();
 
-// === info modal ===
-const infoModal = document.getElementById('info-modal');
-const infoBtn = document.getElementById('btn-info');
-function openInfo() { infoModal.classList.add('open'); infoModal.setAttribute('aria-hidden', 'false'); }
-function closeInfo() { infoModal.classList.remove('open'); infoModal.setAttribute('aria-hidden', 'true'); }
-infoBtn.addEventListener('click', openInfo);
-infoModal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeInfo));
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeInfo(); });
+// === modals (info + buy) ===
+function wireModal(modalId, triggerId) {
+  const m = document.getElementById(modalId);
+  const t = document.getElementById(triggerId);
+  if (!m || !t) return;
+  const open = () => { m.classList.add('open'); m.setAttribute('aria-hidden', 'false'); };
+  const close = () => { m.classList.remove('open'); m.setAttribute('aria-hidden', 'true'); };
+  t.addEventListener('click', open);
+  m.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', close));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+}
+wireModal('info-modal', 'btn-info');
+wireModal('buy-modal', 'btn-buy');
+
+// === copy-to-clipboard buttons inside buy modal ===
+document.querySelectorAll('.pay-copy').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const id = btn.getAttribute('data-copy');
+    const el = document.getElementById(id);
+    if (!el) return;
+    try {
+      await navigator.clipboard.writeText(el.textContent.trim());
+      const prev = btn.textContent;
+      btn.textContent = 'copied';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = prev; btn.classList.remove('copied'); }, 1600);
+    } catch { showToast('clipboard blocked — select + copy manually'); }
+  });
+});
 
 // === topnav shrink on scroll ===
 const nav = document.querySelector('.topnav');

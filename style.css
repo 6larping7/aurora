@@ -310,6 +310,46 @@ main {
   color: var(--ink-faint);
   text-align: right;
 }
+.pay-row { margin-bottom: 16px; }
+.pay-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.pay-addr-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.pay-addr {
+  flex: 1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  padding: 10px 12px;
+  background: rgba(5, 6, 12, 0.5);
+  border: 1px solid var(--hair);
+  border-radius: 8px;
+  color: var(--ink-dim);
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+.pay-copy {
+  padding: 0 14px;
+  background: var(--accent);
+  color: var(--on-accent);
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.pay-copy:hover { background: var(--accent-soft); }
+.pay-copy.copied { background: #86efac; color: #0a2410; }
 
 .scroll-hint {
   position: absolute;

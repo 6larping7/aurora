@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -159,7 +159,7 @@
           <li>HWID-locked, machine-portable on request</li>
           <li>Priority discord role</li>
         </ul>
-        <a class="btn btn-solid tier-btn" href="https://gumroad.com/l/aurora-lifetime" target="_blank" rel="noopener">Buy lifetime</a>
+        <button class="btn btn-solid tier-btn" id="btn-buy" type="button">Buy lifetime</button>
       </article>
     </div>
   </section>
@@ -215,6 +215,49 @@
 
 <div class="toast" id="toast" aria-live="polite"></div>
 
+<div class="modal" id="buy-modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-card">
+    <button class="modal-close" aria-label="close" data-close>×</button>
+    <p class="modal-eyebrow">lifetime · $15 once</p>
+    <h3 class="modal-title">pick a payment.</h3>
+
+    <div class="pay-row">
+      <div class="pay-label">solana (sol)</div>
+      <div class="pay-addr-row">
+        <code class="pay-addr" id="pay-sol">PASTE_YOUR_SOL_ADDRESS</code>
+        <button class="pay-copy" data-copy="pay-sol">copy</button>
+      </div>
+    </div>
+
+    <div class="pay-row">
+      <div class="pay-label">ethereum / usdt-erc20</div>
+      <div class="pay-addr-row">
+        <code class="pay-addr" id="pay-eth">PASTE_YOUR_ETH_ADDRESS</code>
+        <button class="pay-copy" data-copy="pay-eth">copy</button>
+      </div>
+    </div>
+
+    <div class="pay-row">
+      <div class="pay-label">ltc / btc / usdt-trc20</div>
+      <div class="pay-addr-row">
+        <code class="pay-addr">open a ticket in discord</code>
+      </div>
+    </div>
+
+    <p class="modal-body" style="font-size: 13px; margin-top: 20px; color: var(--ink-faint);">
+      send exactly <strong>$15 equivalent</strong>, then open a discord ticket
+      with your <strong>HWID</strong> and the <strong>tx hash</strong>. your
+      lifetime bypass gets added within 24h (usually &lt;1h).
+    </p>
+
+    <a class="btn btn-solid" style="width: 100%; margin-top: 14px;" href="https://discord.gg/aurora" target="_blank" rel="noopener">
+      <span class="btn-main">Open ticket on Discord</span>
+      <span class="btn-sub">paste HWID + tx hash</span>
+    </a>
+  </div>
+</div>
+
 <div class="modal" id="info-modal" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="modal-backdrop" data-close></div>
   <div class="modal-card">
@@ -236,7 +279,7 @@
   </div>
 </div>
 
-<script src="snow.js?v=3"></script>
-<script src="site.js?v=3"></script>
+<script src="snow.js?v=4"></script>
+<script src="site.js?v=4"></script>
 </body>
 </html>
